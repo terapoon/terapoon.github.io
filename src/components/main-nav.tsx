@@ -1,15 +1,15 @@
-import * as React from 'react';
-import Link from 'next/link';
+import { FC } from "react";
+import Link from "next/link";
 
-import { NavItem } from '@/types/nav';
-import { siteConfig } from '@/config/site';
-import { cn } from '@/lib/utils';
+import { NavItem } from "@/types/nav";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 interface MainNavProps {
     items?: NavItem[];
 }
 
-export function MainNav({ items }: MainNavProps) {
+export const MainNav: FC<MainNavProps> = ({ items }) => {
     return (
         <div className="flex gap-6 md:gap-10">
             <Link href="/" className="flex items-center space-x-2">
@@ -24,8 +24,8 @@ export function MainNav({ items }: MainNavProps) {
                                     key={index}
                                     href={item.href}
                                     className={cn(
-                                        'flex items-center text-sm font-medium text-muted-foreground',
-                                        item.disabled && 'cursor-not-allowed opacity-80',
+                                        "flex items-center text-sm font-medium text-muted-foreground",
+                                        item.disabled && "cursor-not-allowed opacity-80",
                                     )}
                                 >
                                     {item.title}
@@ -36,4 +36,4 @@ export function MainNav({ items }: MainNavProps) {
             ) : null}
         </div>
     );
-}
+};
